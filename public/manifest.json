@@ -1,0 +1,17 @@
+{
+  "name": "Eslam Ahmed - Portfolio",
+  "short_name": "EA Portfolio",
+  "description": "Embedded Systems Engineer & Automation Expert Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#0a0a1a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "title": {
+      "en": "Embedded Systems Development",
+      "ar": "تطوير الأنظمة المدمجة"
+    },
+    "description": {
+      "en": "Custom firmware development for microcontrollers, PCB design consultation, and system integration.",
+      "ar": "تطوير برامج ثابتة مخصصة للمتحكمات الدقيقة، استشارات تصميم PCB، وتكامل الأنظمة."
+    },
+    "icon": "FaMicrochip",
+    "features": [
+      { "en": "Firmware Development", "ar": "تطوير البرامج الثابتة" },
+      { "en": "PCB Design", "ar": "تصميم PCB" },
+      { "en": "System Integration", "ar": "تكامل الأنظمة" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": {
+      "en": "IoT Solutions",
+      "ar": "حلول إنترنت الأشياء"
+    },
+    "description": {
+      "en": "End-to-end IoT solutions including device development, cloud integration, and dashboard creation.",
+      "ar": "حلول إنترنت الأشياء شاملة تشمل تطوير الأجهزة والتكامل السحابي وإنشاء لوحات التحكم."
+    },
+    "icon": "FaWifi",
+    "features": [
+      { "en": "Device Development", "ar": "تطوير الأجهزة" },
+      { "en": "Cloud Integration", "ar": "التكامل السحابي" },
+      { "en": "Data Analytics", "ar": "تحليلات البيانات" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": {
+      "en": "PLC Programming",
+      "ar": "برمجة PLC"
+    },
+    "description": {
+      "en": "Professional PLC programming for industrial automation with various platforms (Siemens, Allen-Bradley, etc.).",
+      "ar": "برمجة PLC احترافية للأتمتة الصناعية مع منصات متعددة (سيمنز، ألن برادلي، إلخ)."
+    },
+    "icon": "FaIndustry",
+    "features": [
+      { "en": "Ladder Logic", "ar": "منطق السلم" },
+      { "en": "SFC Programming", "ar": "برمجة SFC" },
+      { "en": "Troubleshooting", "ar": "استكشاف الأخطاء" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": {
+      "en": "SCADA Design",
+      "ar": "تصميم SCADA"
+    },
+    "description": {
+      "en": "Comprehensive SCADA system design with real-time monitoring, control, and data acquisition.",
+      "ar": "تصميم شامل لأنظمة SCADA مع مراقبة وتحكم وجمع بيانات في الوقت الفعلي."
+    },
+    "icon": "FaDesktop",
+    "features": [
+      { "en": "System Architecture", "ar": "بنية النظام" },
+      { "en": "HMI Development", "ar": "تطوير HMI" },
+      { "en": "Data Logging", "ar": "تسجيل البيانات" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": {
+      "en": "BMS Integration",
+      "ar": "تكامل أنظمة إدارة المباني"
+    },
+    "description": {
+      "en": "Building Management Systems integration using BACnet, Modbus, and custom protocols.",
+      "ar": "تكامل أنظمة إدارة المباني باستخدام BACnet و Modbus والبروتوكولات المخصصة."
+    },
+    "icon": "FaBuilding",
+    "features": [
+      { "en": "BACnet Integration", "ar": "تكامل BACnet" },
+      { "en": "Energy Optimization", "ar": "تحسين الطاقة" },
+      { "en": "HVAC Control", "ar": "التحكم في HVAC" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": {
+      "en": "Web Dashboards",
+      "ar": "لوحات التحكم الويب"
+    },
+    "description": {
+      "en": "Modern web-based dashboards for real-time data visualization and system monitoring.",
+      "ar": "لوحات تحكم ويب حديثة لتصور البيانات في الوقت الفعلي ومراقبة النظام."
+    },
+    "icon": "FaReact",
+    "features": [
+      { "en": "Real-time Charts", "ar": "رسوم بيانية فورية" },
+      { "en": "Responsive Design", "ar": "تصميم متجاوب" },
+      { "en": "API Integration", "ar": "تكامل API" }
+    ]
+  }
+]

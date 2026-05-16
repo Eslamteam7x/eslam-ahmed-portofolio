@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": {
+      "en": "Embedded Systems Professional Certificate",
+      "ar": "شهادة احترافية في الأنظمة المدمجة"
+    },
+    "issuer": "Coursera - University of California, Irvine",
+    "date": "2023-06",
+    "image": "/assets/images/certificates/embedded-cert.jpg",
+    "link": "https://coursera.org/verify/embedded-systems",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": {
+      "en": "PLC Programming Masterclass",
+      "ar": "دورة متقدمة في برمجة PLC"
+    },
+    "issuer": "Udemy",
+    "date": "2023-03",
+    "image": "/assets/images/certificates/plc-cert.jpg",
+    "link": "https://udemy.com/certificate/plc-master",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": {
+      "en": "SCADA System Design & Implementation",
+      "ar": "تصميم وتنفيذ أنظمة SCADA"
+    },
+    "issuer": "LinkedIn Learning",
+    "date": "2022-11",
+    "image": "/assets/images/certificates/scada-cert.jpg",
+    "link": "https://linkedin.com/learning/scada-design",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": {
+      "en": "IoT Architecture Specialization",
+      "ar": "تخصص في بنية إنترنت الأشياء"
+    },
+    "issuer": "edX - Microsoft",
+    "date": "2022-08",
+    "image": "/assets/images/certificates/iot-cert.jpg",
+    "link": "https://edx.org/verify/iot-architecture",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": {
+      "en": "BACnet Certification",
+      "ar": "شهادة BACnet"
+    },
+    "issuer": "BACnet International",
+    "date": "2022-05",
+    "image": "/assets/images/certificates/bacnet-cert.jpg",
+    "link": "https://bacnetinternational.org/certified",
+    "featured": true
+  },
+  {
+    "id": 6,
+    "title": {
+      "en": "Advanced FreeRTOS Course",
+      "ar": "دورة FreeRTOS المتقدمة"
+    },
+    "issuer": "Udemy",
+    "date": "2022-02",
+    "image": "/assets/images/certificates/freertos-cert.jpg",
+    "link": "https://udemy.com/certificate/freertos",
+    "featured": false
+  }
+]

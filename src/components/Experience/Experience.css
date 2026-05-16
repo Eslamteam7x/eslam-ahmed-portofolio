@@ -1,0 +1,122 @@
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-primary);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  animation: slideInLeft 0.6s ease var(--delay) both;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -38px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: var(--neon-glow);
+  z-index: 1;
+}
+
+.timeline-content {
+  padding: 25px;
+}
+
+.timeline-period {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.timeline-position {
+  font-size: 1.15rem;
+  margin-bottom: 5px;
+}
+
+.timeline-company {
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.timeline-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.timeline-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.achievement-item {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.achievement-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+[dir="rtl"] .achievement-item {
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+[dir="rtl"] .achievement-item::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 50px;
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 15px;
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: -38px;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .timeline { padding-left: 40px; }
+  [dir="rtl"] .timeline { padding-right: 40px; padding-left: 0; }
+}

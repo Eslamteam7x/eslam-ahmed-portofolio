@@ -1,0 +1,40 @@
+{
+  "name": "Eslam Ahmed",
+  "title": "Embedded Systems Engineer",
+  "titles": [
+    "Embedded Systems Engineer",
+    "Automation Engineer",
+    "BMS Engineer"
+  ],
+  "email": "eslam.ahmed@example.com",
+  "phone": "+20 100 000 0000",
+  "location": "Cairo, Egypt",
+  "avatar": "/assets/images/avatar.jpg",
+  "bio": {
+    "en": "Embedded Systems Engineer with 5+ years of experience in designing, developing, and deploying embedded systems solutions. Specializing in IoT, automation, and BMS systems with a passion for creating innovative technological solutions.",
+    "ar": "مهندس أنظمة مدمجة مع أكثر من 5 سنوات من الخبرة في تصميم وتطوير ونشر حلول الأنظمة المدمجة. متخصص في إنترنت الأشياء والأتمتة وأنظمة إدارة المباني مع شغف لإنشاء حلول تكنولوجية مبتكرة."
+  },
+  "social": {
+    "github": "https://github.com/eslamahmed",
+    "linkedin": "https://linkedin.com/in/eslamahmed",
+    "twitter": "https://twitter.com/eslamahmed",
+    "youtube": "https://youtube.com/@eslamahmed",
+    "facebook": "https://facebook.com/eslamahmed"
+  },
+  "stats": {
+    "projects": 25,
+    "experience": 5,
+    "clients": 15,
+    "certificates": 12
+  },
+  "cvUrl": "/assets/files/Eslam_Ahmed_CV.pdf",
+  "yearsExperience": 5,
+  "specializations": [
+    "Embedded Systems Design",
+    "IoT Solutions Architecture",
+    "PLC & SCADA Systems",
+    "BMS Integration",
+    "Firmware Development",
+    "Web Dashboards"
+  ]
+}

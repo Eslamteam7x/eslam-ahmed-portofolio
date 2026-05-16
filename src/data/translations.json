@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "home": { "en": "Home", "ar": "الرئيسية" },
+    "about": { "en": "About", "ar": "عنّي" },
+    "skills": { "en": "Skills", "ar": "المهارات" },
+    "projects": { "en": "Projects", "ar": "المشاريع" },
+    "experience": { "en": "Experience", "ar": "الخبرات" },
+    "certificates": { "en": "Certificates", "ar": "الشهادات" },
+    "services": { "en": "Services", "ar": "الخدمات" },
+    "contact": { "en": "Contact", "ar": "اتصل بي" },
+    "blog": { "en": "Blog", "ar": "المدونة" },
+    "admin": { "en": "Admin", "ar": "لوحة التحكم" }
+  },
+  "hero": {
+    "greeting": { "en": "Hello, I'm", "ar": "مرحباً، أنا" },
+    "download_cv": { "en": "Download CV", "ar": "تحميل السيرة الذاتية" },
+    "contact_me": { "en": "Contact Me", "ar": "اتصل بي" },
+    "view_projects": { "en": "View Projects", "ar": "عرض المشاريع" }
+  },
+  "about": {
+    "title": { "en": "About Me", "ar": "عنّي" },
+    "subtitle": { "en": "Get to know more about me", "ar": "تعرف أكثر عليّ" },
+    "experience_years": { "en": "Years Experience", "ar": "سنوات الخبرة" },
+    "completed_projects": { "en": "Completed Projects", "ar": "المشاريع المنجزة" },
+    "happy_clients": { "en": "Happy Clients", "ar": "العملاء المسرورون" },
+    "certificates_count": { "en": "Certificates", "ar": "الشهادات" }
+  },
+  "skills": {
+    "title": { "en": "My Skills", "ar": "مهاراتي" },
+    "subtitle": { "en": "Technologies and tools I work with", "ar": "التقنيات والأدوات التي أعمل بها" }
+  },
+  "projects": {
+    "title": { "en": "My Projects", "ar": "مشاريعي" },
+    "subtitle": { "en": "Recent work and projects", "ar": "أعمال ومشاريع حديثة" },
+    "all": { "en": "All", "ar": "الكل" },
+    "embedded": { "en": "Embedded Systems", "ar": "الأنظمة المدمجة" },
+    "iot": { "en": "IoT", "ar": "إنترنت الأشياء" },
+    "bms": { "en": "BMS", "ar": "أنظمة المباني" },
+    "automation": { "en": "Automation", "ar": "الأتمتة" },
+    "search": { "en": "Search projects...", "ar": "ابحث عن مشاريع..." },
+    "view_github": { "en": "GitHub", "ar": "جيت هاب" },
+    "view_live": { "en": "Live Demo", "ar": "عرض مباشر" },
+    "close": { "en": "Close", "ar": "إغلاق" },
+    "no_projects": { "en": "No projects found", "ar": "لا توجد مشاريع" }
+  },
+  "experience": {
+    "title": { "en": "Experience", "ar": "الخبرات" },
+    "subtitle": { "en": "My professional journey", "ar": "رحلتي المهنية" },
+    "present": { "en": "Present", "ar": "حتى الآن" }
+  },
+  "certificates": {
+    "title": { "en": "Certificates", "ar": "الشهادات" },
+    "subtitle": { "en": "Professional certifications and courses", "ar": "الشهادات والدورات المهنية" }
+  },
+  "services": {
+    "title": { "en": "Services", "ar": "الخدمات" },
+    "subtitle": { "en": "What I offer", "ar": "ما أقدمه" }
+  },
+  "statistics": {
+    "title": { "en": "Statistics", "ar": "الإحصائيات" },
+    "projects": { "en": "Projects Completed", "ar": "مشروع مكتمل" },
+    "experience": { "en": "Years Experience", "ar": "سنة خبرة" },
+    "clients": { "en": "Happy Clients", "ar": "عميل مسرور" },
+    "certificates": { "en": "Certificates", "ar": "شهادة" }
+  },
+  "contact": {
+    "title": { "en": "Get In Touch", "ar": "تواصل معي" },
+    "subtitle": { "en": "Let's work together", "ar": "دعنا نعمل معاً" },
+    "name": { "en": "Your Name", "ar": "اسمك" },
+    "email": { "en": "Your Email", "ar": "بريدك الإلكتروني" },
+    "subject": { "en": "Subject", "ar": "الموضوع" },
+    "message": { "en": "Your Message", "ar": "رسالتك" },
+    "send": { "en": "Send Message", "ar": "أرسل الرسالة" },
+    "sending": { "en": "Sending...", "ar": "جاري الإرسال..." },
+    "success": { "en": "Message sent successfully!", "ar": "تم إرسال الرسالة بنجاح!" },
+    "error": { "en": "Failed to send message", "ar": "فشل إرسال الرسالة" },
+    "required": { "en": "This field is required", "ar": "هذا الحقل مطلوب" },
+    "invalid_email": { "en": "Invalid email address", "ar": "بريد إلكتروني غير صالح" }
+  },
+  "admin": {
+    "login": { "en": "Admin Login", "ar": "تسجيل دخول المشرف" },
+    "dashboard": { "en": "Dashboard", "ar": "لوحة التحكم" },
+    "projects": { "en": "Projects", "ar": "المشاريع" },
+    "skills": { "en": "Skills", "ar": "المهارات" },
+    "settings": { "en": "Settings", "ar": "الإعدادات" },
+    "logout": { "en": "Logout", "ar": "تسجيل الخروج" },
+    "password": { "en": "Password", "ar": "كلمة المرور" },
+    "add_project": { "en": "Add Project", "ar": "إضافة مشروع" },
+    "edit_project": { "en": "Edit Project", "ar": "تعديل المشروع" },
+    "delete_project": { "en": "Delete Project", "ar": "حذف المشروع" },
+    "save": { "en": "Save", "ar": "حفظ" },
+    "cancel": { "en": "Cancel", "ar": "إلغاء" },
+    "confirm_delete": { "en": "Are you sure?", "ar": "هل أنت متأكد؟" }
+  },
+  "footer": {
+    "rights": { "en": "All rights reserved", "ar": "جميع الحقوق محفوظة" },
+    "made_with": { "en": "Made with", "ar": "صنع بـ" }
+  },
+  "theme": {
+    "light": { "en": "Light Mode", "ar": "الوضع النهاري" },
+    "dark": { "en": "Dark Mode", "ar": "الوضع الليلي" }
+  },
+  "language": {
+    "en": { "en": "English", "ar": "English" },
+    "ar": { "en": "Arabic", "ar": "العربية" }
+  }
+}

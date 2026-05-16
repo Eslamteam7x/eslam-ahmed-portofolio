@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eslamahmed.dev/sitemap.xml

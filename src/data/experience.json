@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "company": "Tech Solutions Inc.",
+    "position": {
+      "en": "Senior Embedded Systems Engineer",
+      "ar": "مهندس أنظمة مدمجة أول"
+    },
+    "period": {
+      "start": "2023-01",
+      "end": "present"
+    },
+    "description": {
+      "en": "Leading embedded systems design and IoT solutions development for enterprise clients.",
+      "ar": "قيادة تصميم الأنظمة المدمجة وتطوير حلول إنترنت الأشياء لعملاء المؤسسات."
+    },
+    "achievements": [
+      {
+        "en": "Led development of 10+ IoT products",
+        "ar": "قاد تطوير أكثر من 10 منتجات إنترنت الأشياء"
+      },
+      {
+        "en": "Reduced system power consumption by 40%",
+        "ar": "قلل استهلاك الطاقة في النظام بنسبة 40٪"
+      },
+      {
+        "en": "Implemented automated testing pipeline",
+        "ar": "نفذ خط أنابيب اختبار آلي"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "company": "Automation Pro Ltd.",
+    "position": {
+      "en": "Automation Engineer",
+      "ar": "مهندس أتمتة"
+    },
+    "period": {
+      "start": "2021-03",
+      "end": "2022-12"
+    },
+    "description": {
+      "en": "Designed and implemented PLC and SCADA systems for industrial automation projects.",
+      "ar": "تصميم وتنفيذ أنظمة PLC و SCADA لمشاريع الأتمتة الصناعية."
+    },
+    "achievements": [
+      {
+        "en": "Automated 5 production lines",
+        "ar": "أتمت 5 خطوط إنتاج"
+      },
+      {
+        "en": "Implemented predictive maintenance reducing downtime by 30%",
+        "ar": "نفذ الصيانة التنبؤية مما قلل وقت التوقف بنسبة 30٪"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "company": "BMS Technologies",
+    "position": {
+      "en": "BMS Engineer",
+      "ar": "مهندس أنظمة إدارة المباني"
+    },
+    "period": {
+      "start": "2019-06",
+      "end": "2021-02"
+    },
+    "description": {
+      "en": "Managed building management systems integration and optimization for commercial buildings.",
+      "ar": "إدارة تكامل أنظمة إدارة المباني وتحسينها للمباني التجارية."
+    },
+    "achievements": [
+      {
+        "en": "Integrated BMS across 3 commercial complexes",
+        "ar": "دمج أنظمة إدارة المباني عبر 3 مجمعات تجارية"
+      },
+      {
+        "en": "Achieved 25% energy savings through optimization",
+        "ar": "حقق توفير في الطاقة بنسبة 25٪ من خلال التحسين"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "company": "Embedded Solutions Co.",
+    "position": {
+      "en": "Junior Embedded Systems Engineer",
+      "ar": "مهندس أنظمة مدمجة مبتدئ"
+    },
+    "period": {
+      "start": "2018-01",
+      "end": "2019-05"
+    },
+    "description": {
+      "en": "Developed firmware for microcontroller-based products and testing systems.",
+      "ar": "تطوير البرامج الثابتة للمنتجات القائمة على المتحكمات الدقيقة وأنظمة الاختبار."
+    },
+    "achievements": [
+      {
+        "en": "Developed firmware for 8 products",
+        "ar": "طور البرامج الثابتة لـ 8 منتجات"
+      },
+      {
+        "en": "Created comprehensive testing documentation",
+        "ar": "أنشأ توثيق اختبار شامل"
+      }
+    ]
+  }
+]

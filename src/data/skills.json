@@ -1,0 +1,45 @@
+{
+  "categories": [
+    {
+      "name": "Embedded Systems",
+      "icon": "FaMicrochip",
+      "skills": [
+        { "name": "ESP32", "level": 95, "icon": "FaMicrochip" },
+        { "name": "Arduino", "level": 90, "icon": "FaMicrochip" },
+        { "name": "AVR", "level": 85, "icon": "FaMicrochip" },
+        { "name": "ARM", "level": 80, "icon": "FaMicrochip" },
+        { "name": "Embedded C", "level": 95, "icon": "FaCode" },
+        { "name": "FreeRTOS", "level": 75, "icon": "FaCode" },
+        { "name": "UART", "level": 90, "icon": "FaCode" },
+        { "name": "SPI", "level": 90, "icon": "FaCode" },
+        { "name": "I2C", "level": 88, "icon": "FaCode" },
+        { "name": "CAN Bus", "level": 75, "icon": "FaCode" }
+      ]
+    },
+    {
+      "name": "Automation & BMS",
+      "icon": "FaIndustry",
+      "skills": [
+        { "name": "PLC", "level": 90, "icon": "FaIndustry" },
+        { "name": "SCADA", "level": 85, "icon": "FaIndustry" },
+        { "name": "HMI", "level": 85, "icon": "FaIndustry" },
+        { "name": "Modbus", "level": 90, "icon": "FaIndustry" },
+        { "name": "BACnet", "level": 80, "icon": "FaIndustry" },
+        { "name": "HVAC", "level": 75, "icon": "FaIndustry" },
+        { "name": "BMS Systems", "level": 85, "icon": "FaIndustry" }
+      ]
+    },
+    {
+      "name": "Programming",
+      "icon": "FaLaptopCode",
+      "skills": [
+        { "name": "Python", "level": 88, "icon": "FaPython" },
+        { "name": "JavaScript", "level": 85, "icon": "FaJsSquare" },
+        { "name": "C/C++", "level": 92, "icon": "FaCode" },
+        { "name": "Git/GitHub", "level": 85, "icon": "FaGitAlt" },
+        { "name": "React", "level": 80, "icon": "FaReact" },
+        { "name": "Node.js", "level": 75, "icon": "FaNodeJs" }
+      ]
+    }
+  ]
+}
