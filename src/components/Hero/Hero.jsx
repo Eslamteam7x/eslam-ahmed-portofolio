@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
 import { FaDownload, FaEnvelope, FaEye } from 'react-icons/fa';
@@ -66,6 +66,7 @@ export default function Hero() {
   const { language } = useApp();
   const canvasRef = useRef(null);
   const textRef = useRef(null);
+  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
     if (canvasRef.current) createParticles(canvasRef.current);
@@ -139,14 +140,13 @@ export default function Hero() {
             <img
               src={personalInfo.avatar}
               alt={personalInfo.name}
-              className="hero-avatar"
+              className={`hero-avatar ${imgError ? 'hidden' : ''}`}
               loading="lazy"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
+              onError={() => setImgError(true)}
             />
-            <div className="hero-avatar-placeholder">
+            <div className="hero-avatar-placeholder"
+              style={{ display: imgError ? 'flex' : 'none' }}
+            >
               <span>{personalInfo.name.split(' ').map(n => n[0]).join('')}</span>
             </div>
           </div>

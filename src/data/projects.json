@@ -2,145 +2,109 @@
   {
     "id": 1,
     "title": {
-      "en": "Smart Home System - ESP32",
-      "ar": "نظام المنزل الذكي - ESP32"
+      "en": "PLC-Based Conveyor Belt Automation System",
+      "ar": "نظام أتمتة سير النقل باستخدام PLC"
     },
     "description": {
-      "en": "Full-featured smart home system using ESP32 with voice control, mobile app integration, and energy monitoring.",
-      "ar": "نظام منزل ذكي متكامل باستخدام ESP32 مع التحكم الصوتي وتطبيق جوال ومراقبة الطاقة."
+      "en": "Designed and programmed a Siemens PLC-based conveyor automation system, improving operational efficiency and reducing manual operation.",
+      "ar": "تصميم وبرمجة نظام أتمتة سير ناقل باستخدام PLC سيمنز."
     },
-    "category": "embedded",
-    "technologies": ["ESP32", "Arduino", "MQTT", "React", "Node.js", "WiFi"],
-    "images": ["/assets/images/projects/smart-home-1.jpg", "/assets/images/projects/smart-home-2.jpg"],
-    "video": "/assets/videos/smart-home-demo.mp4",
-    "github": "https://github.com/eslamahmed/smart-home",
-    "live": "https://smart-home-demo.vercel.app",
+    "category": "automation",
+    "technologies": ["Siemens PLC", "SCADA", "HMI", "Automation"],
+    "images": ["/assets/images/projects/rioback.png"],
+    "video": "",
+    "github": "",
+    "live": "",
     "featured": true
   },
   {
     "id": 2,
     "title": {
-      "en": "Wireless Patient Monitoring System",
-      "ar": "نظام مراقبة المرضى اللاسلكي"
+      "en": "Smart Home Automation System",
+      "ar": "نظام أتمتة المنزل الذكي"
     },
     "description": {
-      "en": "IoT-based patient monitoring system with real-time vital signs tracking, alerts, and cloud storage.",
-      "ar": "نظام مراقبة المرضى القائم على إنترنت الأشياء مع تتبع العلامات الحيوية في الوقت الفعلي والتنبيهات والتخزين السحابي."
+      "en": "Developed an IoT-based smart home system using ESP32, MQTT, and Firebase with smart monitoring and energy-saving control.",
+      "ar": "تطوير نظام منزل ذكي قائم على إنترنت الأشياء باستخدام ESP32 و MQTT و Firebase."
     },
-    "category": "iot",
-    "technologies": ["ESP32", "Python", "Flask", "React", "WebSocket", "MongoDB"],
-    "images": ["/assets/images/projects/patient-monitor-1.jpg"],
+    "category": "embedded",
+    "technologies": ["ESP32", "MQTT", "Firebase", "IoT", "Arduino"],
+    "images": ["/assets/images/projects/full.webp"],
     "video": "",
-    "github": "https://github.com/eslamahmed/patient-monitor",
+    "github": "",
     "live": "",
     "featured": true
   },
   {
     "id": 3,
     "title": {
-      "en": "BMS Monitoring Dashboard",
-      "ar": "لوحة تحكم نظام إدارة المباني"
+      "en": "Printing Line Automation Project – RioPack",
+      "ar": "مشروع أتمتة خط الطباعة – RioPack"
     },
     "description": {
-      "en": "Comprehensive Building Management System dashboard with real-time monitoring, analytics, and automation control.",
-      "ar": "لوحة تحكم شاملة لنظام إدارة المباني مع مراقبة في الوقت الفعلي وتحليلات والتحكم في الأتمتة."
+      "en": "Programmed and commissioned a 9-stage, 9-color printing line for large roll printing using Fatek PLC and SCADA systems.",
+      "ar": "برمجة وتشغيل خط طباعة 9 مراحل و 9 ألوان باستخدام Fatek PLC."
     },
-    "category": "bms",
-    "technologies": ["PLC", "SCADA", "Modbus", "BACnet", "React", "D3.js"],
-    "images": ["/assets/images/projects/bms-dashboard-1.jpg", "/assets/images/projects/bms-dashboard-2.jpg"],
-    "video": "/assets/videos/bms-demo.mp4",
-    "github": "https://github.com/eslamahmed/bms-dashboard",
-    "live": "https://bms-dashboard.vercel.app",
+    "category": "automation",
+    "technologies": ["Fatek PLC", "SCADA", "HMI", "Automation"],
+    "images": ["/assets/images/projects/rioback.png"],
+    "video": "",
+    "github": "",
+    "live": "",
     "featured": true
   },
   {
     "id": 4,
     "title": {
-      "en": "IR Remote Automation",
-      "ar": "الأتمتة بالتحكم عن بعد بالأشعة تحت الحمراء"
+      "en": "Jigger Machine Automation Upgrade",
+      "ar": "تحديث أتمتة ماكينة الجيجر"
     },
     "description": {
-      "en": "Universal IR remote controller with learning capability, WiFi connectivity, and smartphone control.",
-      "ar": "جهاز تحكم عن بعد عالمي بالأشعة تحت الحمراء مع قدرة على التعلم واتصال WiFi والتحكم عبر الهاتف الذكي."
+      "en": "Converted manual jigger machines into fully automatic systems using tension control with dual motors, dual VSDs, Fatek PLC, and HMI.",
+      "ar": "تحويل ماكينات الجيجر اليدوية إلى أنظمة أوتوماتيكية."
     },
-    "category": "embedded",
-    "technologies": ["ESP32", "IR", "Arduino", "C++", "Mobile App"],
-    "images": ["/assets/images/projects/ir-remote-1.jpg"],
+    "category": "automation",
+    "technologies": ["Fatek PLC", "HMI", "VSD", "Tension Control"],
+    "images": ["/assets/images/projects/jigger machine.png"],
     "video": "",
-    "github": "https://github.com/eslamahmed/ir-remote",
+    "github": "",
     "live": "",
-    "featured": false
+    "featured": true
   },
   {
     "id": 5,
     "title": {
-      "en": "IoT Dashboard Platform",
-      "ar": "منصة لوحات تحكم إنترنت الأشياء"
+      "en": "Agricultural Incubator Control System",
+      "ar": "نظام التحكم في حضانة زراعية"
     },
     "description": {
-      "en": "Real-time IoT data visualization platform supporting multiple protocols, devices, and customizable dashboards.",
-      "ar": "منصة تصور بيانات إنترنت الأشياء في الوقت الفعلي تدعم بروتوكولات متعددة وأجهزة ولوحات تحكم قابلة للتخصيص."
+      "en": "Designed and implemented an automated agricultural incubator system for the Ministry of Agriculture using Siemens PLC.",
+      "ar": "تصميم وتنفيذ نظام حضانة زراعية آلية باستخدام Siemens PLC."
     },
-    "category": "iot",
-    "technologies": ["React", "Node.js", "MQTT", "WebSocket", "D3.js", "MongoDB"],
-    "images": ["/assets/images/projects/iot-dashboard-1.jpg", "/assets/images/projects/iot-dashboard-2.jpg"],
-    "video": "/assets/videos/iot-dashboard-demo.mp4",
-    "github": "https://github.com/eslamahmed/iot-dashboard",
-    "live": "https://iot-dashboard.vercel.app",
-    "featured": true
+    "category": "automation",
+    "technologies": ["Siemens PLC", "SCADA", "HMI", "Temperature Control"],
+    "images": ["/assets/images/projects/rioback.png"],
+    "video": "",
+    "github": "",
+    "live": "",
+    "featured": false
   },
   {
     "id": 6,
     "title": {
-      "en": "PLC Automation System",
-      "ar": "نظام الأتمتة باستخدام PLC"
+      "en": "BMS Project – MEVAC & Atech",
+      "ar": "مشروع نظام إدارة المباني – MEVAC & Atech"
     },
     "description": {
-      "en": "Industrial automation system with Siemens PLC, SCADA integration, and predictive maintenance features.",
-      "ar": "نظام أتمتة صناعية مع PLC من سيمنز وتكامل SCADA وميزات الصيانة التنبؤية."
-    },
-    "category": "automation",
-    "technologies": ["PLC", "SCADA", "HMI", "Modbus", "Python", "SQL"],
-    "images": ["/assets/images/projects/plc-system-1.jpg"],
-    "video": "",
-    "github": "https://github.com/eslamahmed/plc-automation",
-    "live": "",
-    "featured": false
-  },
-  {
-    "id": 7,
-    "title": {
-      "en": "Industrial SCADA Dashboard",
-      "ar": "لوحة تحكم SCADA الصناعية"
-    },
-    "description": {
-      "en": "Modern SCADA monitoring system with real-time process visualization, alarms, and data logging.",
-      "ar": "نظام مراقبة SCADA حديث مع تصور العمليات في الوقت الفعلي والتنبيهات وتسجيل البيانات."
-    },
-    "category": "automation",
-    "technologies": ["SCADA", "PLC", "HMI", "SQL", "Python", "OPC UA"],
-    "images": ["/assets/images/projects/scada-1.jpg", "/assets/images/projects/scada-2.jpg"],
-    "video": "/assets/videos/scada-demo.mp4",
-    "github": "https://github.com/eslamahmed/scada-system",
-    "live": "",
-    "featured": true
-  },
-  {
-    "id": 8,
-    "title": {
-      "en": "HVAC BMS Controller",
-      "ar": "وحدة التحكم في HVAC لنظام إدارة المباني"
-    },
-    "description": {
-      "en": "Advanced HVAC controller with BACnet integration, energy optimization algorithms, and cloud monitoring.",
-      "ar": "وحدة تحكم متقدمة في HVAC مع تكامل BACnet وخوارزميات تحسين الطاقة والمراقبة السحابية."
+      "en": "Contributed to Building Management System (BMS) projects using Schneider systems for HVAC, Chillers monitoring and control.",
+      "ar": "المساهمة في مشاريع أنظمة إدارة المباني باستخدام أنظمة Schneider."
     },
     "category": "bms",
-    "technologies": ["BACnet", "Modbus", "PLC", "Python", "React", "AWS"],
-    "images": ["/assets/images/projects/hvac-1.jpg"],
+    "technologies": ["Schneider", "BACnet", "HVAC", "BMS", "Chillers"],
+    "images": ["/assets/images/projects/full.webp"],
     "video": "",
-    "github": "https://github.com/eslamahmed/hvac-bms",
+    "github": "",
     "live": "",
-    "featured": false
+    "featured": true
   }
 ]
