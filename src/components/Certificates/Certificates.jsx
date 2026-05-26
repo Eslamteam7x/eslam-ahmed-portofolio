@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t, formatDate } from '../../utils/translations';
 import { getCertificates } from '../../utils/dataService';
+import { getImageSrc } from '../../utils/imageService';
 import { FaExternalLinkAlt, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Certificates.css';
 
@@ -34,7 +35,7 @@ export default function Certificates() {
                 <div className="cert-card glass-card" onClick={() => setSelected(cert)}>
                   <div className="cert-image">
                     <img
-                      src={cert.image}
+                      src={getImageSrc(cert.image)}
                       alt={cert.title[language]}
                       loading="lazy"
                       onError={(e) => {
@@ -61,7 +62,7 @@ export default function Certificates() {
           <div className="cert-fullscreen" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelected(null)}><FaTimes /></button>
             <img
-              src={selected.image}
+              src={getImageSrc(selected.image)}
               alt={selected.title[language]}
               onError={(e) => {
                 e.target.src = `https://placehold.co/800x600/1a1a2e/00f0ff?text=Certificate`;

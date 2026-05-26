@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
 import { FaDownload, FaEnvelope, FaEye } from 'react-icons/fa';
 import { getPersonalInfo } from '../../utils/dataService';
+import { getImageSrc } from '../../utils/imageService';
 import './Hero.css';
 
 function createParticles(canvas) {
@@ -139,7 +140,7 @@ export default function Hero() {
           <div className="hero-avatar-wrapper">
             <div className="hero-avatar-glow" />
             <img
-              src={personalInfo.avatar}
+              src={getImageSrc(personalInfo.avatar)}
               alt={personalInfo.name}
               className={`hero-avatar ${imgError ? 'hidden' : ''}`}
               loading="lazy"

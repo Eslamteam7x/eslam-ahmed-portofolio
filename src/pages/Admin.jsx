@@ -14,6 +14,7 @@ import {
   isGitHubConfigured, setGitHubToken, clearGitHubToken,
   commitImage, publishAllData,
 } from '../utils/githubService';
+import { saveImageLocally, getLocalImage, getAllLocalImages } from '../utils/imageService';
 import {
   FaLock, FaUser, FaSignOutAlt, FaPlus, FaEdit, FaTrash, FaSave, FaTimes,
   FaCog, FaProjectDiagram, FaCode, FaBriefcase, FaCertificate, FaConciergeBell,
@@ -767,6 +768,17 @@ function SettingsPanel({ language }) {
     try {
       const data = getAllDataForPublish();
       const results = await publishAllData(data);
+
+      const localImages = getAllLocalImages();
+      for (const [filename, entry] of Object.entries(localImages)) {
+        try {
+          await commitImage(`public/assets/images/${filename}`, entry.data, `Upload image ${filename} via admin`);
+          results.push({ path: `public/assets/images/${filename}`, success: true });
+        } catch (err) {
+          results.push({ path: `public/assets/images/${filename}`, success: false, error: err.message });
+        }
+      }
+
       setPublishResult(results);
     } catch (err) {
       setPublishResult([{ path: 'error', success: false, error: err.message }]);
@@ -851,28 +863,41 @@ function ImageUploader({ language, onUpload }) {
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef(null);
 
-  const handleUpload = async (e) => {
+  const handleUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
-    try {
-      const reader = new FileReader();
-      reader.onload = async () => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      try {
         const base64 = reader.result.split(',')[1];
         const ext = file.name.split('.').pop();
-        const path = `public/assets/images/${Date.now()}.${ext}`;
+        const filename = `${Date.now()}.${ext}`;
 
-        await commitImage(path, base64, `Upload image ${file.name} via admin`);
-        const url = `/assets/images/${path.split('/').pop()}`;
+        saveImageLocally(filename, base64);
+        const url = `/assets/images/${filename}`;
+
+        if (isGitHubConfigured()) {
+          const path = `public/assets/images/${filename}`;
+          commitImage(path, base64, `Upload image ${file.name} via admin`).catch(() => {});
+        }
+
         onUpload(url);
-      };
-      reader.readAsDataURL(file);
-    } catch (err) {
-      alert(language === 'en' ? `Upload failed: ${err.message}` : `فشل الرفع: ${err.message}`);
-    }
-    setUploading(false);
-    if (fileRef.current) fileRef.current.value = '';
+      } catch (err) {
+        alert(language === 'en' ? `Upload failed: ${err.message}` : `فشل الرفع: ${err.message}`);
+      }
+      setUploading(false);
+      if (fileRef.current) fileRef.current.value = '';
+    };
+
+    reader.onerror = () => {
+      alert(language === 'en' ? 'Failed to read file' : 'فشل قراءة الملف');
+      setUploading(false);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -888,11 +913,11 @@ function ImageUploader({ language, onUpload }) {
       <label htmlFor="image-upload-input" className="btn btn-outline" style={{ cursor: 'pointer', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
         {uploading ? <FaSpinner className="spin" /> : <FaUpload />}
         {' '}{uploading
-          ? (language === 'en' ? 'Uploading...' : 'جاري الرفع...')
+          ? (language === 'en' ? 'Loading...' : 'جاري التحميل...')
           : (language === 'en' ? 'Upload Image' : 'رفع صورة')}
       </label>
       <small style={{ display: 'block', color: 'var(--text-muted)', marginTop: '4px' }}>
-        <FaLink /> {language === 'en' ? 'Image will be saved to GitHub' : 'سيتم حفظ الصورة في GitHub'}
+        {language === 'en' ? 'Image saved locally instantly. Publish to GitHub to make it permanent.' : 'الصورة محفوظة محلياً فوراً. انشر إلى GitHub لجعلها دائمة.'}
       </small>
     </div>
   );

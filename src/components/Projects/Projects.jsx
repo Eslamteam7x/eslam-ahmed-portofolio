@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
 import { getProjects } from '../../utils/dataService';
+import { getImageSrc } from '../../utils/imageService';
 import { FaGithub, FaExternalLinkAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './Projects.css';
 
@@ -66,7 +67,7 @@ export default function Projects() {
             >
               <div className="project-image">
                 <img
-                  src={project.images[0]}
+                  src={getImageSrc(project.images[0])}
                   alt={project.title[language]}
                   loading="lazy"
                   onError={(e) => {
@@ -106,7 +107,7 @@ export default function Projects() {
             </button>
             <div className="modal-gallery">
               <img
-                src={selectedProject.images[0]}
+                src={getImageSrc(selectedProject.images[0])}
                 alt={selectedProject.title[language]}
                 className="modal-image"
                 onError={(e) => {
