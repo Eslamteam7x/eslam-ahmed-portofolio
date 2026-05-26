@@ -1,19 +1,20 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import personalInfo from '../../data/personal_info.json';
+import { getPersonalInfo } from '../../utils/dataService';
 import { FaCalendarAlt, FaProjectDiagram, FaSmile, FaAward } from 'react-icons/fa';
 import './About.css';
 
-const stats = [
-  { key: 'projects', icon: FaProjectDiagram },
-  { key: 'experience', icon: FaCalendarAlt },
-  { key: 'clients', icon: FaSmile },
-  { key: 'certificates', icon: FaAward },
-];
-
 export default function About() {
   const { language } = useApp();
+  const [personalInfo] = useState(getPersonalInfo());
+
+  const stats = [
+    { key: 'projects', icon: FaProjectDiagram },
+    { key: 'experience', icon: FaCalendarAlt },
+    { key: 'clients', icon: FaSmile },
+    { key: 'certificates', icon: FaAward },
+  ];
   const sectionRef = useRef(null);
 
   useEffect(() => {

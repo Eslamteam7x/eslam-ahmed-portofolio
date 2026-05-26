@@ -1,12 +1,13 @@
 import { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t, formatDate } from '../../utils/translations';
-import certificatesData from '../../data/certificates.json';
+import { getCertificates } from '../../utils/dataService';
 import { FaExternalLinkAlt, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Certificates.css';
 
 export default function Certificates() {
   const { language } = useApp();
+  const [certificatesData] = useState(getCertificates());
   const [selected, setSelected] = useState(null);
   const [slideIdx, setSlideIdx] = useState(0);
   const sliderRef = useRef(null);

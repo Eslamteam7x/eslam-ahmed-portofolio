@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import personalInfo from '../../data/personal_info.json';
+import { getPersonalInfo } from '../../utils/dataService';
 import { FaProjectDiagram, FaCalendarAlt, FaSmile, FaAward } from 'react-icons/fa';
 import './Statistics.css';
-
-const statConfig = [
-  { key: 'projects', icon: FaProjectDiagram, value: personalInfo.stats.projects },
-  { key: 'experience', icon: FaCalendarAlt, value: personalInfo.stats.experience },
-  { key: 'clients', icon: FaSmile, value: personalInfo.stats.clients },
-  { key: 'certificates', icon: FaAward, value: personalInfo.stats.certificates },
-];
 
 function Counter({ target, duration = 2000 }) {
   const [count, setCount] = useState(0);
@@ -43,6 +36,14 @@ function Counter({ target, duration = 2000 }) {
 
 export default function Statistics() {
   const { language } = useApp();
+  const personalInfo = getPersonalInfo();
+
+  const statConfig = [
+    { key: 'projects', icon: FaProjectDiagram, value: personalInfo.stats.projects },
+    { key: 'experience', icon: FaCalendarAlt, value: personalInfo.stats.experience },
+    { key: 'clients', icon: FaSmile, value: personalInfo.stats.clients },
+    { key: 'certificates', icon: FaAward, value: personalInfo.stats.certificates },
+  ];
 
   return (
     <section className="section statistics-section">

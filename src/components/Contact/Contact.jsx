@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import personalInfo from '../../data/personal_info.json';
+import { getPersonalInfo } from '../../utils/dataService';
 import { FaPaperPlane, FaGithub, FaLinkedin, FaTwitter, FaYoutube, FaFacebook } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
@@ -20,6 +20,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
+  const personalInfo = getPersonalInfo();
 
   const validate = () => {
     const errs = {};

@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t, getPeriodText } from '../../utils/translations';
-import experienceData from '../../data/experience.json';
+import { getExperience } from '../../utils/dataService';
 import './Experience.css';
 
 export default function Experience() {
   const { language } = useApp();
+  const [experienceData] = useState(getExperience());
 
   return (
     <section id="experience" className="section">

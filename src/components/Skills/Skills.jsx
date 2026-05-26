@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import skillsData from '../../data/skills.json';
+import { getSkills } from '../../utils/dataService';
 import { FaMicrochip, FaIndustry, FaLaptopCode } from 'react-icons/fa';
 import './Skills.css';
 
@@ -12,6 +13,7 @@ const iconMap = {
 
 export default function Skills() {
   const { language } = useApp();
+  const [skillsData] = useState(getSkills());
 
   return (
     <section id="skills" className="section">

@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import servicesData from '../../data/services.json';
+import { getServices } from '../../utils/dataService';
 import { FaMicrochip, FaWifi, FaIndustry, FaDesktop, FaBuilding, FaReact } from 'react-icons/fa';
 import './Services.css';
 
@@ -10,6 +11,7 @@ const iconMap = {
 
 export default function Services() {
   const { language } = useApp();
+  const [servicesData] = useState(getServices());
 
   return (
     <section id="services" className="section">

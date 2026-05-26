@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
 import { FaDownload, FaEnvelope, FaEye } from 'react-icons/fa';
-import personalInfo from '../../data/personal_info.json';
+import { getPersonalInfo } from '../../utils/dataService';
 import './Hero.css';
 
 function createParticles(canvas) {
@@ -67,6 +67,7 @@ export default function Hero() {
   const canvasRef = useRef(null);
   const textRef = useRef(null);
   const [imgError, setImgError] = useState(false);
+  const personalInfo = getPersonalInfo();
 
   useEffect(() => {
     if (canvasRef.current) createParticles(canvasRef.current);
