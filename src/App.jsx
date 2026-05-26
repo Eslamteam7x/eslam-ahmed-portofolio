@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useApp } from './context/AppContext';
 import Loading from './components/Loading/Loading';
 import Navbar from './components/Navbar/Navbar';
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
       </Routes>
       <Footer />
+      <SpeedInsights />
     </>
   );
 }
