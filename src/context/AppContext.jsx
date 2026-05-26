@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { applyThemeOverrides } from '../utils/themeService';
 
 const AppContext = createContext();
 
@@ -12,6 +13,9 @@ export function AppProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [adminUser, setAdminUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const refreshSite = useCallback(() => setRefreshKey(k => k + 1), []);
 
   useEffect(() => {
     localStorage.setItem('lang', language);
@@ -22,6 +26,7 @@ export function AppProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
+    applyThemeOverrides();
   }, [theme]);
 
   useEffect(() => {
@@ -37,7 +42,8 @@ export function AppProvider({ children }) {
       theme, setTheme, toggleTheme,
       isAdmin, setIsAdmin,
       adminUser, setAdminUser,
-      loading, setLoading
+      loading, setLoading,
+      refreshKey, refreshSite,
     }}>
       {children}
     </AppContext.Provider>

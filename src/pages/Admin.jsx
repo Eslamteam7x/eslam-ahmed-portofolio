@@ -15,6 +15,7 @@ import {
   commitImage, publishAllData,
 } from '../utils/githubService';
 import { saveImageLocally, getLocalImage, getAllLocalImages } from '../utils/imageService';
+import { getThemeOverrides, saveThemeOverride, resetThemeOverrides, applyThemeOverrides } from '../utils/themeService';
 import {
   FaLock, FaUser, FaSignOutAlt, FaPlus, FaEdit, FaTrash, FaSave, FaTimes,
   FaCog, FaProjectDiagram, FaCode, FaBriefcase, FaCertificate, FaConciergeBell,
@@ -29,7 +30,8 @@ const TABS = [
   { id: 'certificates', label: { en: 'Certificates', ar: 'الشهادات' }, icon: FaCertificate },
   { id: 'services', label: { en: 'Services', ar: 'الخدمات' }, icon: FaConciergeBell },
   { id: 'personal', label: { en: 'Personal Info', ar: 'المعلومات الشخصية' }, icon: FaInfoCircle },
-  { id: 'settings', label: { en: 'Settings', ar: 'الإعدادات' }, icon: FaCog },
+  { id: 'appearance', label: { en: 'Appearance', ar: 'المظهر' }, icon: FaCog },
+  { id: 'settings', label: { en: 'GitHub', ar: 'GitHub' }, icon: FaGitAlt },
 ];
 
 export default function Admin() {
@@ -137,6 +139,7 @@ export default function Admin() {
           {activeTab === 'certificates' && <CertificatesManager language={language} />}
           {activeTab === 'services' && <ServicesManager language={language} />}
           {activeTab === 'personal' && <PersonalInfoManager language={language} />}
+          {activeTab === 'appearance' && <AppearanceManager language={language} />}
           {activeTab === 'settings' && <SettingsPanel language={language} />}
         </div>
       </div>
@@ -707,32 +710,196 @@ function PersonalInfoManager({ language }) {
     setTimeout(() => setSaved(false), 2000);
   };
 
+  const updateSocial = (key, value) => {
+    setForm(prev => ({ ...prev, social: { ...prev.social, [key]: value } }));
+  };
+
   return (
-    <div className="glass-card" style={{ padding: '30px' }}>
-      <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>{language === 'en' ? 'Personal Information' : 'المعلومات الشخصية'}</h3>
-      <div className="admin-form-body">
-        <div className="form-row">
-          <div className="form-group"><label>{language === 'en' ? 'Name' : 'الاسم'}</label><input type="text" value={form.name} onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))} className="form-input" /></div>
-          <div className="form-group"><label>{language === 'en' ? 'Title' : 'المسمى'}</label><input type="text" value={form.title} onChange={e => setForm(prev => ({ ...prev, title: e.target.value }))} className="form-input" /></div>
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>Email</label><input type="text" value={form.email} onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))} className="form-input" /></div>
-          <div className="form-group"><label>{language === 'en' ? 'Phone' : 'الهاتف'}</label><input type="text" value={form.phone} onChange={e => setForm(prev => ({ ...prev, phone: e.target.value }))} className="form-input" /></div>
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>{language === 'en' ? 'Location' : 'الموقع'}</label><input type="text" value={form.location} onChange={e => setForm(prev => ({ ...prev, location: e.target.value }))} className="form-input" /></div>
-          <div className="form-group"><label>Avatar URL</label><input type="text" value={form.avatar} onChange={e => setForm(prev => ({ ...prev, avatar: e.target.value }))} className="form-input" /></div>
-        </div>
-        <div className="form-row">
+    <div className="admin-form-grid">
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>{language === 'en' ? 'Basic Info' : 'معلومات أساسية'}</h3>
+        <div className="admin-form-body">
+          <div className="form-row">
+            <div className="form-group"><label>{language === 'en' ? 'Name' : 'الاسم'}</label><input type="text" value={form.name} onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))} className="form-input" /></div>
+            <div className="form-group"><label>{language === 'en' ? 'Title' : 'المسمى'}</label><input type="text" value={form.title} onChange={e => setForm(prev => ({ ...prev, title: e.target.value }))} className="form-input" /></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group"><label>Email</label><input type="text" value={form.email} onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))} className="form-input" /></div>
+            <div className="form-group"><label>{language === 'en' ? 'Phone' : 'الهاتف'}</label><input type="text" value={form.phone} onChange={e => setForm(prev => ({ ...prev, phone: e.target.value }))} className="form-input" /></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group"><label>{language === 'en' ? 'Location' : 'الموقع'}</label><input type="text" value={form.location} onChange={e => setForm(prev => ({ ...prev, location: e.target.value }))} className="form-input" /></div>
+            <div className="form-group"><label>{language === 'en' ? 'Years Exp.' : 'سنوات الخبرة'}</label><input type="number" value={form.yearsExperience} onChange={e => setForm(prev => ({ ...prev, yearsExperience: parseInt(e.target.value) || 0 }))} className="form-input" /></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group"><label>CV URL</label><input type="text" value={form.cvUrl} onChange={e => setForm(prev => ({ ...prev, cvUrl: e.target.value }))} className="form-input" /></div>
+          </div>
           <div className="form-group"><label>Bio (EN)</label><textarea value={form.bio.en} onChange={e => setForm(prev => ({ ...prev, bio: { ...prev.bio, en: e.target.value } }))} className="form-input form-textarea" rows={3} /></div>
           <div className="form-group"><label>Bio (AR)</label><textarea value={form.bio.ar} onChange={e => setForm(prev => ({ ...prev, bio: { ...prev.bio, ar: e.target.value } }))} className="form-input form-textarea" rows={3} /></div>
         </div>
-        <div className="form-row">
-          <div className="form-group"><label>CV URL</label><input type="text" value={form.cvUrl} onChange={e => setForm(prev => ({ ...prev, cvUrl: e.target.value }))} className="form-input" /></div>
-          <div className="form-group"><label>{language === 'en' ? 'Years Exp.' : 'سنوات الخبرة'}</label><input type="text" value={form.yearsExperience} onChange={e => setForm(prev => ({ ...prev, yearsExperience: parseInt(e.target.value) || 0 }))} className="form-input" /></div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>{language === 'en' ? 'Avatar' : 'الصورة الشخصية'}</h3>
+        <div className="admin-form-body">
+          <div className="form-group">
+            <label>URL</label>
+            <input type="text" value={form.avatar} onChange={e => setForm(prev => ({ ...prev, avatar: e.target.value }))} className="form-input" />
+            <ImageUploader language={language} onUpload={(url) => setForm(prev => ({ ...prev, avatar: url }))} />
+          </div>
+          {form.avatar && (
+            <div style={{ marginTop: '10px', textAlign: 'center' }}>
+              <img src={form.avatar} alt="avatar preview" style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--primary)' }} />
+            </div>
+          )}
         </div>
-        <div className="form-actions">
-          <button onClick={handleSave} className="btn btn-primary"><FaSave /> {language === 'en' ? (saved ? 'Saved!' : 'Save') : (saved ? 'تم الحفظ!' : 'حفظ')}</button>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>{language === 'en' ? 'Hero Typing Titles' : 'عناوين الكتابة في الهيرو'}</h3>
+        <div className="admin-form-body">
+          {form.titles?.map((title, i) => (
+            <div key={i} className="form-row">
+              <div className="form-group"><label>EN #{i + 1}</label><input type="text" value={title} onChange={e => { const t = [...form.titles]; t[i] = e.target.value; setForm(prev => ({ ...prev, titles: t })); }} className="form-input" /></div>
+            </div>
+          ))}
+          <button onClick={() => setForm(prev => ({ ...prev, titles: [...(prev.titles || []), ''] }))} className="btn btn-outline" style={{ fontSize: '0.85rem' }}><FaPlus /> {language === 'en' ? 'Add Title' : 'إضافة عنوان'}</button>
+        </div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>Statistics</h3>
+        <div className="admin-form-body">
+          <div className="form-row">
+            <div className="form-group"><label>{language === 'en' ? 'Projects Count' : 'عدد المشاريع'}</label><input type="number" value={form.stats?.projects || 0} onChange={e => setForm(prev => ({ ...prev, stats: { ...prev.stats, projects: parseInt(e.target.value) || 0 } }))} className="form-input" /></div>
+            <div className="form-group"><label>{language === 'en' ? 'Experience Years' : 'سنوات الخبرة'}</label><input type="number" value={form.stats?.experience || 0} onChange={e => setForm(prev => ({ ...prev, stats: { ...prev.stats, experience: parseInt(e.target.value) || 0 } }))} className="form-input" /></div>
+          </div>
+          <div className="form-row">
+            <div className="form-group"><label>{language === 'en' ? 'Clients' : 'العملاء'}</label><input type="number" value={form.stats?.clients || 0} onChange={e => setForm(prev => ({ ...prev, stats: { ...prev.stats, clients: parseInt(e.target.value) || 0 } }))} className="form-input" /></div>
+            <div className="form-group"><label>{language === 'en' ? 'Certificates' : 'الشهادات'}</label><input type="number" value={form.stats?.certificates || 0} onChange={e => setForm(prev => ({ ...prev, stats: { ...prev.stats, certificates: parseInt(e.target.value) || 0 } }))} className="form-input" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>{language === 'en' ? 'Social Links' : 'روابط التواصل'}</h3>
+        <div className="admin-form-body">
+          {Object.entries(form.social || {}).map(([key, val]) => (
+            <div key={key} className="form-group">
+              <label style={{ textTransform: 'capitalize' }}>{key}</label>
+              <input type="text" value={val} onChange={e => updateSocial(key, e.target.value)} className="form-input" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="form-actions" style={{ marginTop: '20px' }}>
+        <button onClick={handleSave} className="btn btn-primary"><FaSave /> {language === 'en' ? (saved ? 'Saved!' : 'Save All') : (saved ? 'تم الحفظ!' : 'حفظ الكل')}</button>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- Appearance Manager ---------- */
+function AppearanceManager({ language }) {
+  const [overrides, setOverrides] = useState({});
+  const [preview, setPreview] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setOverrides(getThemeOverrides());
+  }, []);
+
+  const handleChange = (variable, value) => {
+    setOverrides(prev => ({ ...prev, [variable]: value }));
+    document.documentElement.style.setProperty(variable, value);
+  };
+
+  const handleSave = () => {
+    Object.entries(overrides).forEach(([key, value]) => {
+      saveThemeOverride(key, value);
+    });
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
+  const handleReset = () => {
+    resetThemeOverrides();
+    setOverrides({});
+  };
+
+  const colors = [
+    { var: '--primary', label: { en: 'Primary Color', ar: 'اللون الأساسي' } },
+    { var: '--primary-dark', label: { en: 'Primary Dark', ar: 'اللون الأساسي الداكن' } },
+    { var: '--secondary', label: { en: 'Secondary Color', ar: 'اللون الثانوي' } },
+    { var: '--accent', label: { en: 'Accent Color', ar: 'لون التمييز' } },
+    { var: '--bg-primary', label: { en: 'Background', ar: 'الخلفية' } },
+    { var: '--text-primary', label: { en: 'Text Color', ar: 'لون النص' } },
+    { var: '--text-secondary', label: { en: 'Text Secondary', ar: 'لون النص الثانوي' } },
+  ];
+
+  return (
+    <div className="admin-form-grid">
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>
+          {language === 'en' ? 'Color Customizer' : 'تخصيص الألوان'}
+        </h3>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '20px', fontSize: '0.9rem' }}>
+          {language === 'en'
+            ? 'Changes apply instantly. Click Save to keep them.'
+            : 'التغييرات تطبق فوراً. اضغط حفظ للإبقاء عليها.'}
+        </p>
+        <div className="admin-form-body">
+          {colors.map(c => (
+            <div key={c.var} className="form-row" style={{ gridTemplateColumns: '1fr 1fr', alignItems: 'center' }}>
+              <label style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                {c.label[language]}
+              </label>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <input
+                  type="color"
+                  value={overrides[c.var] || getComputedStyle(document.documentElement).getPropertyValue(c.var).trim() || '#000000'}
+                  onChange={e => handleChange(c.var, e.target.value)}
+                  style={{ width: '50px', height: '35px', borderRadius: '6px', border: '1px solid var(--glass-border)', cursor: 'pointer', background: 'transparent' }}
+                />
+                <input
+                  type="text"
+                  value={overrides[c.var] || getComputedStyle(document.documentElement).getPropertyValue(c.var).trim() || ''}
+                  onChange={e => handleChange(c.var, e.target.value)}
+                  className="form-input"
+                  style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}
+                  placeholder="#000000"
+                />
+              </div>
+            </div>
+          ))}
+          <div className="form-actions">
+            <button onClick={handleSave} className="btn btn-primary">
+              <FaSave /> {language === 'en' ? (saved ? 'Saved!' : 'Save Colors') : (saved ? 'تم الحفظ!' : 'حفظ الألوان')}
+            </button>
+            <button onClick={handleReset} className="btn btn-outline">
+              <FaTimes /> {language === 'en' ? 'Reset to Default' : 'إعادة للافتراضي'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>
+          {language === 'en' ? 'Preview' : 'معاينة'}
+        </h3>
+        <div className="admin-form-body" style={{ gap: '10px' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <span className="btn btn-primary" style={{ fontSize: '0.8rem', padding: '8px 16px' }}>Primary Button</span>
+            <span className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '8px 16px' }}>Secondary Button</span>
+          </div>
+          <div style={{ padding: '15px', borderRadius: '10px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)' }}>
+            <h4 style={{ color: 'var(--primary)', marginBottom: '8px' }}>{language === 'en' ? 'Sample Card' : 'بطاقة نموذج'}</h4>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+              {language === 'en' ? 'This is how your content will look.' : 'هكذا سيبدو المحتوى الخاص بك.'}
+            </p>
+            <div style={{ height: '4px', width: '60px', background: 'var(--gradient-primary)', borderRadius: '2px', marginTop: '10px' }} />
+          </div>
         </div>
       </div>
     </div>
