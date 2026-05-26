@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { t } from '../utils/translations';
-import projectsData from '../data/projects.json';
-import { FaLock, FaSignOutAlt, FaPlus, FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
+import { getProjects, saveProjects } from '../utils/dataService';
+import { FaLock, FaUser, FaSignOutAlt, FaPlus, FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
 import './Admin.css';
 
-const ADMIN_PASSWORD = 'admin123';
+const ADMIN_CREDENTIALS = {
+  username: 'Eslam Ahmed',
+  password: 'Eslam@2026',
+};
 
 export default function Admin() {
-  const { language, isAdmin, setIsAdmin } = useApp();
+  const { language, isAdmin, setIsAdmin, setAdminUser } = useApp();
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
   const [projects, setProjects] = useState([]);
@@ -16,14 +20,16 @@ export default function Admin() {
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    setProjects([...projectsData]);
-  }, []);
+    if (isAdmin) setProjects(getProjects());
+  }, [isAdmin]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
       setIsAdmin(true);
+      setAdminUser(username);
       setLoginError(false);
+      setProjects(getProjects());
     } else {
       setLoginError(true);
     }
@@ -31,21 +37,28 @@ export default function Admin() {
 
   const handleLogout = () => {
     setIsAdmin(false);
+    setAdminUser(null);
+    setUsername('');
     setPassword('');
   };
 
   const handleDelete = (id) => {
     if (window.confirm(t('admin.confirm_delete', language))) {
-      setProjects(prev => prev.filter(p => p.id !== id));
+      const updated = projects.filter(p => p.id !== id);
+      setProjects(updated);
+      saveProjects(updated);
     }
   };
 
   const handleSave = (project) => {
+    let updated;
     if (editing) {
-      setProjects(prev => prev.map(p => p.id === project.id ? project : p));
+      updated = projects.map(p => p.id === project.id ? project : p);
     } else {
-      setProjects(prev => [...prev, { ...project, id: Date.now() }]);
+      updated = [...projects, { ...project, id: Date.now() }];
     }
+    setProjects(updated);
+    saveProjects(updated);
     setEditing(null);
     setShowForm(false);
   };
@@ -57,17 +70,30 @@ export default function Admin() {
           <FaLock className="admin-login-icon" />
           <h2>{t('admin.login', language)}</h2>
           <form onSubmit={handleLogin} className="admin-login-form">
-            <input
-              type="password"
-              placeholder={t('admin.password', language)}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-input"
-              autoFocus
-            />
+            <div className="form-group">
+              <FaUser className="input-icon" />
+              <input
+                type="text"
+                placeholder={language === 'en' ? 'Username' : 'اسم المستخدم'}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="form-input"
+                autoFocus
+              />
+            </div>
+            <div className="form-group">
+              <FaLock className="input-icon" />
+              <input
+                type="password"
+                placeholder={t('admin.password', language)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+              />
+            </div>
             {loginError && (
               <p className="form-status error">
-                {language === 'en' ? 'Invalid password' : 'كلمة المرور غير صحيحة'}
+                {language === 'en' ? 'Invalid credentials' : 'بيانات الدخول غير صحيحة'}
               </p>
             )}
             <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
@@ -84,9 +110,14 @@ export default function Admin() {
       <div className="container">
         <div className="admin-header">
           <h1 className="section-title">{t('admin.dashboard', language)}</h1>
-          <button onClick={handleLogout} className="btn btn-secondary">
-            <FaSignOutAlt /> {t('admin.logout', language)}
-          </button>
+          <div className="admin-header-actions">
+            <span className="admin-user-badge">
+              <FaUser /> {language === 'en' ? 'Welcome' : 'مرحباً'}, Eslam Ahmed
+            </span>
+            <button onClick={handleLogout} className="btn btn-secondary">
+              <FaSignOutAlt /> {t('admin.logout', language)}
+            </button>
+          </div>
         </div>
 
         <div className="admin-toolbar">

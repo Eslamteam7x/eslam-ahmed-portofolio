@@ -10,6 +10,7 @@ export function AppProvider({ children }) {
     return localStorage.getItem('theme') || 'dark';
   });
   const [isAdmin, setIsAdmin] = useState(false);
+  const [adminUser, setAdminUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export function AppProvider({ children }) {
       language, setLanguage, toggleLanguage,
       theme, setTheme, toggleTheme,
       isAdmin, setIsAdmin,
+      adminUser, setAdminUser,
       loading, setLoading
     }}>
       {children}

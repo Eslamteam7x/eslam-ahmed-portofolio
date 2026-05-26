@@ -29,6 +29,41 @@
   gap: 15px;
 }
 
+.admin-login-form .form-group {
+  position: relative;
+}
+
+.admin-login-form .input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  z-index: 1;
+}
+
+.admin-login-form .form-input {
+  padding-left: 42px;
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
 .admin-dashboard {
   min-height: 100vh;
   padding-bottom: 60px;

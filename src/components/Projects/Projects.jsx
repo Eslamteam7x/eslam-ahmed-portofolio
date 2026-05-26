@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { t } from '../../utils/translations';
-import projectsData from '../../data/projects.json';
+import { getProjects } from '../../utils/dataService';
 import { FaGithub, FaExternalLinkAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './Projects.css';
 
@@ -12,6 +12,8 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const projectsData = getProjects();
 
   const filtered = projectsData.filter(p => {
     const matchCategory = activeCategory === 'all' || p.category === activeCategory;
