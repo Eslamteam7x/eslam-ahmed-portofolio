@@ -14,7 +14,7 @@ import {
   isGitHubConfigured, setGitHubToken, clearGitHubToken,
   commitImage, publishAllData,
 } from '../utils/githubService';
-import { saveImageLocally, getLocalImage, getAllLocalImages } from '../utils/imageService';
+import { saveImageLocally, getLocalImage, getAllLocalImages, saveFavicon, resetFavicon, getFavicon } from '../utils/imageService';
 import { getThemeOverrides, saveThemeOverride, resetThemeOverrides, applyThemeOverrides } from '../utils/themeService';
 import {
   FaLock, FaUser, FaSignOutAlt, FaPlus, FaEdit, FaTrash, FaSave, FaTimes,
@@ -808,6 +808,11 @@ function AppearanceManager({ language }) {
 
   useEffect(() => {
     setOverrides(getThemeOverrides());
+    const faviconData = getFavicon();
+    const el = document.getElementById('favicon-preview');
+    if (faviconData && el) {
+      el.src = 'data:image/x-icon;base64,' + faviconData;
+    }
   }, []);
 
   const handleChange = (variable, value) => {
@@ -901,6 +906,62 @@ function AppearanceManager({ language }) {
             <div style={{ height: '4px', width: '60px', background: 'var(--gradient-primary)', borderRadius: '2px', marginTop: '10px' }} />
           </div>
         </div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>
+          {language === 'en' ? 'Website Icon (Favicon)' : 'أيقونة الموقع (Favicon)'}
+        </h3>
+        <div className="admin-form-body">
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '10px' }}>
+            {language === 'en'
+              ? 'Upload an image (PNG, JPG, ICO) to change the browser tab icon.'
+              : 'ارفع صورة (PNG, JPG, ICO) لتغيير أيقونة تبويب المتصفح.'}
+          </p>
+          <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <img
+              id="favicon-preview"
+              src="/favicon.svg"
+              alt="favicon"
+              style={{ width: '64px', height: '64px', borderRadius: '12px', border: '2px solid var(--glass-border)', objectFit: 'cover' }}
+            />
+            <div>
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/x-icon"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  const reader = new FileReader();
+                  reader.onload = () => {
+                    const base64 = reader.result.split(',')[1];
+                    saveFavicon(base64);
+                    document.getElementById('favicon-preview').src = 'data:image/x-icon;base64,' + base64;
+                  };
+                  reader.readAsDataURL(file);
+                }}
+                style={{ display: 'none' }}
+                id="favicon-upload"
+              />
+              <label htmlFor="favicon-upload" className="btn btn-primary" style={{ cursor: 'pointer', fontSize: '0.85rem' }}>
+                <FaUpload /> {language === 'en' ? 'Upload Icon' : 'رفع أيقونة'}
+              </label>
+              <button onClick={() => { resetFavicon(); document.getElementById('favicon-preview').src = '/favicon.svg'; }} className="btn btn-outline" style={{ marginLeft: '8px', fontSize: '0.85rem' }}>
+                <FaTimes /> {language === 'en' ? 'Reset' : 'إعادة'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="glass-card" style={{ padding: '30px', marginTop: '0' }}>
+        <h3 style={{ marginBottom: '20px', color: 'var(--primary)' }}>
+          {language === 'en' ? 'Image Uploader' : 'رفع الصور'}
+        </h3>
+        <ImageUploader language={language} onUpload={(url) => {
+          navigator.clipboard.writeText(url).catch(() => {});
+          alert(language === 'en' ? 'Uploaded: ' + url + '\nCopied to clipboard!' : 'تم الرفع: ' + url + '\nتم النسخ!');
+        }} />
       </div>
     </div>
   );
@@ -1018,7 +1079,7 @@ function SettingsPanel({ language }) {
         </h3>
         <ImageUploader language={language} onUpload={(url) => {
           navigator.clipboard.writeText(url).catch(() => {});
-          alert(language === 'en' ? `Uploaded: ${url}\nCopied to clipboard!` : `تم الرفع: ${url}\nتم النسخ!`);
+          alert(language === 'en' ? 'Uploaded: ' + url + '\nCopied to clipboard!' : 'تم الرفع: ' + url + '\nتم النسخ!');
         }} />
       </div>
     </div>

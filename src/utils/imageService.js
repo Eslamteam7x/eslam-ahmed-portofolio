@@ -48,3 +48,35 @@ export function getAllLocalImages() {
 export function clearLocalImages() {
   localStorage.removeItem(IMAGE_CACHE_KEY);
 }
+
+const FAVICON_KEY = 'admin_favicon';
+
+export function saveFavicon(base64Data) {
+  localStorage.setItem(FAVICON_KEY, base64Data);
+  const link = document.querySelector('link[rel="icon"]');
+  if (link) {
+    link.href = `data:image/x-icon;base64,${base64Data}`;
+  }
+}
+
+export function getFavicon() {
+  return localStorage.getItem(FAVICON_KEY) || null;
+}
+
+export function applyFavicon() {
+  const data = getFavicon();
+  if (data) {
+    const link = document.querySelector('link[rel="icon"]');
+    if (link) {
+      link.href = `data:image/x-icon;base64,${data}`;
+    }
+  }
+}
+
+export function resetFavicon() {
+  localStorage.removeItem(FAVICON_KEY);
+  const link = document.querySelector('link[rel="icon"]');
+  if (link) {
+    link.href = '/favicon.svg';
+  }
+}

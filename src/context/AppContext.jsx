@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { applyThemeOverrides } from '../utils/themeService';
+import { applyFavicon } from '../utils/imageService';
 
 const AppContext = createContext();
 
@@ -30,6 +31,7 @@ export function AppProvider({ children }) {
   }, [theme]);
 
   useEffect(() => {
+    applyFavicon();
     setTimeout(() => setLoading(false), 2000);
   }, []);
 
